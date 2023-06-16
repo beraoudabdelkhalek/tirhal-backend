@@ -17,7 +17,11 @@ urlpatterns = [
     path('addcomment/',views.addcomment,name=''),
     path('addrating/',views.addrating,name=''),
     path('regions/',views.getregions,name='to get all regions'),
-    path('region/<int:code>',views.getregion,name='to get a region by id')
-
+    path('region/<int:code>',views.getregion,name='to get a region by id'),
+    path('deletecomment/<int:id>',views.deletecomment,name='delete a comment'),
+    path('deletefavorite/<int:id>',views.deletefavorite,name='delete favorite'),
+    path('addplace/',views.addplace,name='add a place'),
+    path('updateregion/<int:id>',views.updateregion,name='update region'),
+    path("allplaces/",views.getallplaces,name="get all places")
 
 ]

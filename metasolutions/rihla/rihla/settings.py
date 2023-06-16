@@ -130,7 +130,7 @@ USE_TZ = True
 ALLOWED_HOSTS=['10.0.2.2','.localhost', '127.0.0.1']
 CORS_ALLOWED_ORIGINS = [
     "http://10.0.2.2:8000",   
-    "http://localhost:3000"
+    "http://127.0.0.1:5173"
 ]
 # to allow the client to access apis 
 CORS_URLS_REGEX = r"^/api/.*$"

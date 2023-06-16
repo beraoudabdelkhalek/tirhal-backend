@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime
 # Create your models here.
 class Utilizer(models.Model):
     email=models.CharField(max_length=255)
     role=models.CharField(max_length=255,default='touriste')
     password=models.CharField(max_length=63)
+    phone=models.CharField(max_length=63,default="0")
     fullname=models.CharField(max_length=63)
     # def __str__(self):
     #     return self.fullname
@@ -25,8 +27,8 @@ class Place(models.Model):
     description=models.TextField(max_length=4064,null=True,blank=True)
     latitude=models.FloatField()
     longitude=models.FloatField()
-    datefrom=models.DateTimeField(null=True,blank=True)
-    dateto=models.DateTimeField(null=True,blank=True)
+    timefrom=models.TimeField(null=True,blank=True)
+    timeto=models.TimeField(null=True,blank=True)
 
 class Image(models.Model):
     idPlace=models.ForeignKey(Place, related_name='images', on_delete=models.CASCADE)

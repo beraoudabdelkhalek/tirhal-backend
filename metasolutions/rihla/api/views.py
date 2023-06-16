@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from .models import Utilizer,Place,Region,Image,Favorite,Comment,Rating,Transport,Event
 from .serializers import UtilizerSerializer,RegionSerializer,PlaceSerializer,MiniPlaceSerializer,ImageSerializer,FavoriteSerializer,CommentSerializer,RatingSerializerOnadd,CommentSerializerOnadd,RatingSerializer,TransportSerializer,MiniRegionSerializer
 from rest_framework import status
+from datetime import datetime
 
 # Create your views here.
 @api_view(["GET"])
@@ -19,7 +20,7 @@ def register(request):
             serializer.save()
             return Response({"msg":"created","status":status.HTTP_201_CREATED})
         else:
-            return Response({"msg":"error has occured","status":status.HTTP_400_BAD_REQUEST})
+            return Response({"msg":"error has occured","user":serializer.data,"status":status.HTTP_400_BAD_REQUEST})
     else:
         return Response({"msg":"user already exists","status":status.HTTP_400_BAD_REQUEST})
     
@@ -170,8 +171,63 @@ def getregions(request):
 
 @api_view(["GET"])
 def getregion(request,code):
-    print(int(code))
     query=Region.objects.filter(code=int(code))
     serializer=RegionSerializer(query,many=True)
-    return Response({"data":serializer.data,"status":status.HTTP_200_OK})
+    # for element in
+    print(query[0].id) 
+    placequery=Place.objects.filter(idRegion=query[0].id)
+    return Response({"data":serializer.data,"placecount":placequery.count(),"status":status.HTTP_200_OK})
 
+@api_view(["DELETE"])
+def deletecomment(request,id):
+    try:
+        query=Comment.objects.get(id=id)
+        query.delete()
+        return Response({"msg":"deleted successfully","status":status.HTTP_200_OK})
+
+    except:
+        return Response({"msg":"something went wrong","status":status.HTTP_400_BAD_REQUEST})
+
+@api_view(["DELETE"])
+def deletefavorite(request,id):
+    try:
+        query=Favorite.objects.get(id=id)
+        query.delete()
+        return Response({"msg":"deleted successfully","status":status.HTTP_200_OK})
+
+    except:
+        return Response({"msg":"something went wrong","status":status.HTTP_400_BAD_REQUEST})
+    
+
+@api_view(["POST"])
+def addplace(request):
+    try:
+        param=request.data
+        # try:
+        userquery=Utilizer.objects.get(email=param["email"])
+        time_string1 = param["timefrom"]
+        time_object1 = datetime.strptime(time_string1, '%H:%M:%S').time()
+        time_string2 = param["timeto"]
+        time_object2 = datetime.strptime(time_string2, '%H:%M:%S').time()
+        region=Region.objects.get(id=param['idRegion'])
+        place=Place.objects.create(idUtilizer=userquery,idRegion=region,name=param["name"],category=param["category"],theme=param["theme"],description=param["description"],latitude=param["latitude"],longitude=param["longitude"],timefrom=time_object1,timeto=time_object2)
+        values=request.data
+        for value in values:
+            if value.isnumeric() and values[value]:
+                Image.objects.create(photo=values[value],idPlace=place)
+        return Response({"msg":"added succefully","status":status.HTTP_200_OK})
+
+    except:
+        return Response({"msg":"user not found","status":status.HTTP_400_BAD_REQUEST})
+
+@api_view(["PUT"])
+def updateregion(request,id):
+    data={"email":request.data["email"],"phone":request.data["phone"],"fullname":request.data["fullname"]}
+    user=Utilizer.objects.filter(id=id).update(**data)
+    return Response({"msg":"updated","status":status.HTTP_200_OK})
+
+@api_view(["GET"])
+def getallplaces(request):
+    query=Place.objects.all()
+    serializer=PlaceSerializer(query,many=True)
+    return Response({"data":serializer.data,"status":status.HTTP_200_OK})
