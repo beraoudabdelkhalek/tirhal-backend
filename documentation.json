@@ -1,0 +1,741 @@
+{
+	"info": {
+		"_postman_id": "a1860a38-a3ea-451f-b8ed-12f2277c9668",
+		"name": "rihla",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20704021"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "abdou2@test.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "abdou",
+							"type": "text"
+						},
+						{
+							"key": "fullname",
+							"value": "beraoud",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "responsable",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add region",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "wilaya",
+							"value": "Telemcen",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addregion/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addregion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a place",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/place/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"place",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a place in a specific region",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/placeinregion/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"placeinregion",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idUtilizer",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "idPlace",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/favorite/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"favorite",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get favorites of a user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/myfavorite/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"myfavorite",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get comments of a place",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/comments/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get the total rating of a place",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ham",
+							"type": "text"
+						},
+						{
+							"key": "theme",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/totalrating/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"totalrating",
+						"1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get the rating of the user of the specified place",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idUtilizer",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/rating/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"rating",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idUtilizer",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "idPlace",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "ggg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addcomment/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addcomment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idUtilizer",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "idPlace",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addrating/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addrating",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all regions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/regions/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"regions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a region",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/region/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"region",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete comment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deletecomment/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deletecomment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete favorite",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deletefavorite/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deletefavorite",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add place",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "responsable1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "idRegion",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "14",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "jardin",
+							"type": "text"
+						},
+						{
+							"key": "theme",
+							"value": "nature",
+							"type": "text"
+						},
+						{
+							"key": "timefrom",
+							"value": "10:00:00",
+							"type": "text"
+						},
+						{
+							"key": "timeto",
+							"value": "12:00:00",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "hhgdhg",
+							"type": "text"
+						},
+						{
+							"key": "1",
+							"type": "file",
+							"src": "/C:/Users/user/Pictures/akkardb.png"
+						},
+						{
+							"key": "2",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addplace/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addplace",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all places",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/allplaces/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"allplaces",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update region",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "responsable2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "fullname",
+							"value": "ch4ng3r",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "064587923",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/updateregion/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateregion",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a region",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteregion/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteregion",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
