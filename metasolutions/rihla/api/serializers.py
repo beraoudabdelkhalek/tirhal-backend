@@ -11,6 +11,10 @@ class RegionSerializer(serializers.ModelSerializer):
         model=Region
         fields="__all__"
         depth=1
+class RegionSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model=Region
+        fields="__all__"
 class MiniRegionSerializer(serializers.ModelSerializer):
     class Meta:
         model=Region

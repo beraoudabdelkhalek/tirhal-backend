@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Utilizer,Place,Region,Image,Favorite,Comment,Rating,Transport,Event
-from .serializers import UtilizerSerializer,RegionSerializer,PlaceSerializer,MiniPlaceSerializer,ImageSerializer,FavoriteSerializer,CommentSerializer,RatingSerializerOnadd,CommentSerializerOnadd,RatingSerializer,TransportSerializer,MiniRegionSerializer
+from .serializers import UtilizerSerializer,RegionSerializer,PlaceSerializer,MiniPlaceSerializer,ImageSerializer,FavoriteSerializer,CommentSerializer,RatingSerializerOnadd,CommentSerializerOnadd,RatingSerializer,TransportSerializer,MiniRegionSerializer,RegionSerializer2
 from rest_framework import status
 from datetime import datetime
 
@@ -32,8 +32,10 @@ def login(request):
         query=Utilizer.objects.get(email=email)
         if query :
             if password==query.password:
+                regionquery=Region.objects.filter(idUser=query)
                 serializer=UtilizerSerializer(query)
-                return Response({"data":serializer.data,"status":status.HTTP_200_OK})
+                regionser=RegionSerializer2(regionquery,many=True)
+                return Response({"data":serializer.data,"regions":regionser.data,"status":status.HTTP_200_OK})
             else: return Response({"msg":"incorrect email or password","status":status.HTTP_400_BAD_REQUEST})
     except:
         return Response({"msg":"incorrect email or password","status":status.HTTP_400_BAD_REQUEST})
