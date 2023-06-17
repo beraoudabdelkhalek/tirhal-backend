@@ -233,3 +233,12 @@ def getallplaces(request):
     query=Place.objects.all()
     serializer=PlaceSerializer(query,many=True)
     return Response({"data":serializer.data,"status":status.HTTP_200_OK})
+
+@api_view(["DELETE"])
+def deleteregion(request,code):
+    try:
+        query=Region.objects.filter(code=code)
+        query.delete()
+        return Response({"msg":"deleted successfuly","status":status.HTTP_200_OK})
+    except:
+        return Response({"msg":"something went wrong","status":status.HTTP_400_BAD_REQUEST})

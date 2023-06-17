@@ -22,6 +22,7 @@ urlpatterns = [
     path('deletefavorite/<int:id>',views.deletefavorite,name='delete favorite'),
     path('addplace/',views.addplace,name='add a place'),
     path('updateregion/<int:id>',views.updateregion,name='update region'),
-    path("allplaces/",views.getallplaces,name="get all places")
+    path("allplaces/",views.getallplaces,name="get all places"),
+    path("deleteregion/<int:code>",views.deleteregion,name="delete a region")
 
 ]
